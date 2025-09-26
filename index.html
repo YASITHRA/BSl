@@ -45,14 +45,14 @@
     <h2>Art Gallery</h2>
     
     <!-- Filter buttons -->
-    <div class="filter-buttons" role="tablist">
-      <button data-filter="all" class="active" aria-pressed="true">All</button>
-      <button data-filter="pencil" aria-pressed="false">Pencil Arts</button>
-      <button data-filter="painting" aria-pressed="false">Paintings</button>
-      <button data-filter="logo" aria-pressed="false">Logo Designs</button>
-      <button data-filter="poster" aria-pressed="false">Posters</button>
-      <button data-filter="journal" aria-pressed="false">Journals</button>
-      <button data-filter="other" aria-pressed="false">Others</button>
+    <div class="filter-buttons">
+      <button data-filter="all" class="active">All</button>
+      <button data-filter="pencil">Pencil Arts</button>
+      <button data-filter="painting">Paintings</button>
+      <button data-filter="logo">Logo Designs</button>
+      <button data-filter="poster">Posters</button>
+      <button data-filter="journal">Journals</button>
+      <button data-filter="other">Others</button>
     </div>
     
     <!-- Gallery grid -->
@@ -88,6 +88,14 @@
   <footer>
     <p>© 2025 Achini Sewwandi | All rights reserved</p>
   </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-img" alt="Expanded artwork">
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+  </div>
 
   <script src="script.js" defer></script>
 </body>
