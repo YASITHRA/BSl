@@ -31,6 +31,7 @@ html {
   color: white;
   text-decoration: none;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .logo:hover {
@@ -109,21 +110,26 @@ html {
   scroll-margin-top: 100px;
 }
 
-/* Gallery */
+/* Gallery Filter Buttons */
 .filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
   margin-bottom: 20px;
-  text-align: center;
 }
 
 .filter-buttons button {
   background-color: #ddd;
   border: none;
-  padding: 8px 16px;
-  margin: 0 6px;
+  padding: 10px 18px;
   border-radius: 25px;
   cursor: pointer;
   font-weight: 600;
   transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;
+  flex: 1 1 auto;
+  max-width: 160px;
 }
 
 .filter-buttons button:hover,
@@ -132,6 +138,15 @@ html {
   color: white;
 }
 
+/* Small phones: compact buttons */
+@media (max-width: 480px) {
+  .filter-buttons button {
+    flex: 1 1 45%; /* two per row */
+    max-width: none;
+  }
+}
+
+/* Gallery Grid */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -233,6 +248,18 @@ footer {
 
 /* Mobile Navbar */
 @media (max-width: 768px) {
+  .navbar {
+    flex-wrap: nowrap;
+  }
+
+  .logo {
+    flex: 1;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
@@ -249,10 +276,6 @@ footer {
 
   .nav-links.active {
     display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
   }
 }
 
