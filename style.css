@@ -17,7 +17,7 @@ html {
   left: 0;
   width: 100%;
   background-color: #b187e8;
-  padding: 15px 30px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,10 +25,16 @@ html {
   box-sizing: border-box;
 }
 
-.navbar .logo {
+.logo {
   font-family: 'Playfair Display', serif;
   font-size: 24px;
   color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo:hover {
+  color: #ffd700;
 }
 
 .nav-links {
@@ -49,9 +55,11 @@ html {
 
 .menu-toggle {
   display: none;
-  font-size: 26px;
+  font-size: 28px;
   cursor: pointer;
   color: white;
+  background: none;
+  border: none;
 }
 
 /* Hero Section */
@@ -98,7 +106,7 @@ html {
   margin: auto;
   padding: 60px 20px;
   text-align: center;
-  scroll-margin-top: 100px; /* offset for fixed navbar */
+  scroll-margin-top: 100px;
 }
 
 /* Gallery */
@@ -141,7 +149,6 @@ html {
   transform: scale(1.05);
 }
 
-/* Filter support */
 .hidden {
   display: none !important;
 }
@@ -224,15 +231,20 @@ footer {
   color: white;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* Mobile Navbar */
+@media (max-width: 768px) {
   .nav-links {
     display: none;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     background-color: #b187e8;
     width: 100%;
+    text-align: center;
     padding: 15px 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    animation: slideDown 0.3s ease forwards;
   }
 
   .nav-links.active {
@@ -242,4 +254,10 @@ footer {
   .menu-toggle {
     display: block;
   }
+}
+
+/* Slide down animation */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
