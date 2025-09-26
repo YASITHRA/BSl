@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selunark | Artist Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet" />
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Selunark</div>
+    <div class="menu-toggle">☰</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <img src="Logo.jpg" loading="lazy" alt="Selunark Logo" class="hero-img" />
+    <div class="hero-text">
+      <h1>Welcome to Selunark</h1>
+      <p>Artist | Designer | Creative Soul</p>
+      <a href="#gallery" class="btn">Explore Gallery</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <p>Hello! I'm <strong>Achini Sewwandi</strong>, the creator behind <strong>Selunark</strong> — a space where art meets emotion. From pencil sketches to dreamy oil paintings, from minimalist logos to vibrant posters, I pour my heart into every creation. Self-taught, curious, and always evolving.</p>
+    <p>When I'm not drawing, I'm exploring design, content creation, and blending art into the digital world. Let's create something beautiful together.</p>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section">
+    <h2>Art Gallery</h2>
+    
+    <!-- Filter buttons -->
+    <div class="filter-buttons">
+      <button data-filter="all" class="active">All</button>
+      <button data-filter="pencil">Pencil Arts</button>
+      <button data-filter="painting">Paintings</button>
+      <button data-filter="logo">Logo Designs</button>
+      <button data-filter="poster">Posters</button>
+      <button data-filter="journal">Journals</button>
+      <button data-filter="other">Others</button>
+    </div>
+    
+    <!-- Gallery grid -->
+    <div class="gallery-grid">
+      <img src="Deepika.jpg" loading="lazy" alt="Pencil Sketch of Deepika" data-category="pencil" />
+      <img src="Lily.jpg" loading="lazy" alt="Pencil Sketch of Lily" data-category="pencil" />
+      <img src="Cat.jpg" loading="lazy" alt="Pencil Sketch of a Cat" data-category="pencil" />
+      <img src="Eye.jpg" loading="lazy" alt="Pencil Sketch of an Eye" data-category="pencil" />
+      <img src="Art3.jpg" loading="lazy" alt="Abstract Pencil Art" data-category="pencil" />
+      <img src="Tanjiro.jpg" loading="lazy" alt="Anime Painting of Tanjiro" data-category="painting" />
+      <img src="Polish_20250905_232817417.jpg" loading="lazy" alt="Colorful Painting" data-category="painting" />
+      <img src="Mitzuri.jpg" loading="lazy" alt="Anime Painting of Mitsuri" data-category="painting" />
+      <img src="Logo1.jpg" loading="lazy" alt="Logo Design Concept 1" data-category="logo" />
+      <img src="Poster1.jpg" loading="lazy" alt="Creative Poster 1" data-category="poster" />
+      <img src="J1.jpg" loading="lazy" alt="Art Journal 1" data-category="journal" />
+      <img src="O1.jpg" loading="lazy" alt="Other Artwork" data-category="other" />
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <h2>📞 Let's Connect</h2>
+    <p>Have a project in mind, or just want to say hi? Reach out!</p>
+    <ul class="contact-details">
+      <li>Email: <a href="mailto:achinisewwandi143@gmail.com">achinisewwandi143@gmail.com</a></li>
+      <li>Phone: +94 75 014 1757</li>
+      <li>Instagram: <a href="https://instagram.com/selunark" target="_blank">@selunark</a></li>
+      <li>Youtube: <a href="https://youtube.com/@selunark__realm" target="_blank">@selunark__realm</a></li>
+      <li>Location: Negombo, Sri Lanka</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>© 2025 Achini Sewwandi | All rights reserved</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
