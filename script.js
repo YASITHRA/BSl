@@ -1,31 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const nav = document.querySelector(".navbar");
-  const navHeight = () => nav.getBoundingClientRect().height;
-
-  // Smooth scroll
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      const id = link.getAttribute("href");
-      const target = document.querySelector(id);
-      if (!target) return;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - navHeight() - 12;
-      window.scrollTo({ top, behavior: "smooth" });
-    });
-  });
-
-  // Mobile menu
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelector(".nav-links");
-  menuToggle.addEventListener("click", () => navLinks.classList.toggle("active"));
-
-  // Gallery filter
   const filterButtons = document.querySelectorAll(".filter-buttons button");
   const galleryImages = document.querySelectorAll(".gallery-grid img");
+
+  // Filter functionality
   filterButtons.forEach(button => {
     button.addEventListener("click", () => {
       filterButtons.forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
+
       const filter = button.getAttribute("data-filter");
       galleryImages.forEach(img => {
         const cat = img.getAttribute("data-category");
@@ -66,11 +48,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   closeBtn.addEventListener("click", () => lightbox.classList.remove("open"));
   nextBtn.addEventListener("click", () => {
-    do { currentIndex = (currentIndex + 1) % images.length; } while (images[currentIndex].classList.contains("hidden"));
+    do { currentIndex = (currentIndex + 1) % images.length; }
+    while (images[currentIndex].classList.contains("hidden"));
     showImage();
   });
   prevBtn.addEventListener("click", () => {
-    do { currentIndex = (currentIndex - 1 + images.length) % images.length; } while (images[currentIndex].classList.contains("hidden"));
+    do { currentIndex = (currentIndex - 1 + images.length) % images.length; }
+    while (images[currentIndex].classList.contains("hidden"));
     showImage();
   });
 
