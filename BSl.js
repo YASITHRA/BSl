@@ -14,36 +14,26 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   });
 });
 
-// Gallery filter (accessible)
+// Gallery filter (simple like first version)
 const filterButtons = document.querySelectorAll('.filter-buttons button');
 const galleryImages = document.querySelectorAll('.gallery-grid img');
 
 filterButtons.forEach(button => {
-  button.addEventListener('click', () => applyFilter(button));
-  button.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      applyFilter(button);
-    }
+  button.addEventListener('click', () => {
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    const filter = button.getAttribute('data-filter');
+    galleryImages.forEach(img => {
+      const category = img.getAttribute('data-category');
+      if (filter === 'all' || category === filter) {
+        img.classList.remove('hidden');
+      } else {
+        img.classList.add('hidden');
+      }
+    });
   });
 });
-
-function applyFilter(button) {
-  filterButtons.forEach(btn => {
-    btn.classList.remove('active');
-    btn.setAttribute('aria-pressed', 'false');
-  });
-  button.classList.add('active');
-  button.setAttribute('aria-pressed', 'true');
-
-  const filter = button.getAttribute('data-filter');
-  galleryImages.forEach(img => {
-    const category = img.getAttribute('data-category');
-    const match = filter === 'all' || category === filter;
-    img.classList.toggle('is-hidden', !match);
-    img.setAttribute('aria-hidden', (!match).toString());
-  });
-}
 
 // Mobile menu toggle
 const menuToggle = document.querySelector('.menu-toggle');
@@ -53,10 +43,65 @@ menuToggle.addEventListener('click', () => {
   navLinks.classList.toggle('active');
 });
 
-// Keyboard toggle for accessibility
 menuToggle.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' || e.key === ' ') {
     e.preventDefault();
     navLinks.classList.toggle('active');
+  }
+});
+
+// Lightbox functionality
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.querySelector('.lightbox-img');
+const closeBtn = document.querySelector('.lightbox .close');
+const prevBtn = document.querySelector('.lightbox .prev');
+const nextBtn = document.querySelector('.lightbox .next');
+
+let currentIndex = 0;
+let visibleImages = [];
+
+// open lightbox
+galleryImages.forEach((img) => {
+  img.addEventListener('click', () => {
+    visibleImages = Array.from(galleryImages).filter(img => !img.classList.contains('hidden'));
+    currentIndex = visibleImages.indexOf(img);
+    showImage();
+    lightbox.style.display = 'flex';
+  });
+});
+
+// close
+closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') lightbox.style.display = 'none';
+});
+
+// next/prev
+function showImage() {
+  lightboxImg.src = visibleImages[currentIndex].src;
+  lightboxImg.alt = visibleImages[currentIndex].alt;
+}
+
+nextBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % visibleImages.length;
+  showImage();
+});
+
+prevBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + visibleImages.length) % visibleImages.length;
+  showImage();
+});
+
+// keyboard arrows
+window.addEventListener('keydown', (e) => {
+  if (lightbox.style.display === 'flex') {
+    if (e.key === 'ArrowRight') {
+      currentIndex = (currentIndex + 1) % visibleImages.length;
+      showImage();
+    }
+    if (e.key === 'ArrowLeft') {
+      currentIndex = (currentIndex - 1 + visibleImages.length) % visibleImages.length;
+      showImage();
+    }
   }
 });
